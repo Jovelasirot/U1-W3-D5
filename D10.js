@@ -485,10 +485,36 @@ console.log("Risultati della ricerca:", searchByTitle(movies, "Avenger"));
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
+let match = [];
+let unMatch = [];
+const searchAndDivide = (movies, searchString) => {
+  const matchingMovies = movies.filter((movie) =>
+    movie.Title.toLowerCase().includes(searchString.toLowerCase())
+  );
+
+  match.push(matchingMovies);
+  unMatch.push(...movies.filter((movie) => !matchingMovies.includes(movie)));
+};
+
+searchAndDivide(movies, "Avenger");
+console.log("match", match);
+console.log("unMatch", unMatch);
 
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
+
+const removeIndex = (movies, deleteThisNum) => {
+  const updatedMovies = [
+    ...movies.slice(0, deleteThisNum),
+    ...movies.slice(deleteThisNum + 1),
+  ];
+
+  return console.log("array senza il numbero 3", updatedMovies);
+};
+
+const deleteThisNum = 3;
+removeIndex(movies, deleteThisNum);
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
@@ -496,18 +522,40 @@ console.log("Risultati della ricerca:", searchByTitle(movies, "Avenger"));
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
 
+document.getElementById("container");
+
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
+
+document.querySelectorAll("td");
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
 
+const printTextInTdElements = () => {
+  const tdElements = document.querySelectorAll("td");
+
+  tdElements.forEach((tdElement, index) => {
+    console.log(`Testo in <td> ${index + 1}:`, tdElement.textContent.trim());
+  });
+};
+
+printTextInTdElements();
+
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
 
+const addBgToLinks = () => {
+  const allLinks = document.querySelectorAll("a");
+  allLinks.forEach((link) => {
+    link.style.backgroundColor = "red";
+  });
+};
+
+addBgToLinks();
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
