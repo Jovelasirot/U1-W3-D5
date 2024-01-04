@@ -560,9 +560,29 @@ addBgToLinks();
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+const aggiungiElemento = () => {
+  let myList = document.getElementById("myList");
+
+  let nuovoElemento = document.createElement("li");
+
+  let testoElemento = document.createTextNode("Batman");
+  nuovoElemento.appendChild(testoElemento);
+
+  myList.appendChild(nuovoElemento);
+};
+
+aggiungiElemento();
+
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
+
+const deleteUl = () => {
+  let myList = document.getElementById("myList");
+  myList.innerHTML = "";
+};
+
+deleteUl();
 
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
@@ -597,3 +617,20 @@ addBgToLinks();
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+
+const isItPrime = (numero) => {
+  if (numero <= 1) {
+    return false;
+  }
+
+  for (let i = 2; i < numero; i++) {
+    if (numero % i === 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+let numberToVerify = 61;
+console.log(`is ${numberToVerify} a prime number?`, isItPrime(numberToVerify));
